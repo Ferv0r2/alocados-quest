@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import TransactionPage from "@/pages/TransactionPage";
 import ExchangePage from "@/pages/ExchangePage";
-import { Header } from "@/components/Header";
+import { Header } from "@/components/header/Header";
 
 const App = () => {
   return (

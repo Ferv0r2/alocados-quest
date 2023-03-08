@@ -11,9 +11,9 @@ const HeaderLayout = styled.header`
   height: 120px;
 `;
 
-const HeaderLogo = styled.div`
+const HeaderLogo = styled.figure`
   position: relative;
-  width: 167.8px;
+  width: 168px;
   height: 40px;
 `;
 

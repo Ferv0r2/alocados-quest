@@ -16,6 +16,11 @@ export const GlobalStyle = createGlobalStyle`
     ol {
         list-style: none;
     }
+    
+    button {
+        border: 0;
+        background-color: transparent;
+    }
 
     html,
     body {

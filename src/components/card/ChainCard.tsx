@@ -1,3 +1,4 @@
+import { replaceBalance } from "@/utils";
 import {
   ContainerInit,
   Icon,
@@ -5,21 +6,20 @@ import {
   ChainLabel,
   ChainAccount,
 } from "@/styles";
-import { replaceAccount } from "@/utils";
 
 interface Props {
   name: string;
   symbol: string;
-  amount: number;
+  balance: number;
 }
 
-export const ChainCard = ({ name, symbol, amount }: Props) => {
+export const ChainCard = ({ name, symbol, balance }: Props) => {
   return (
     <div>
       <ContainerInit>
         <ChainIcon size={36}>
           <Icon
-            src={`assets/logos/${symbol.toLowerCase()}.png`}
+            src={`/assets/logos/${symbol.toLowerCase()}.png`}
             alt={symbol}
             size={20}
           />
@@ -27,7 +27,7 @@ export const ChainCard = ({ name, symbol, amount }: Props) => {
         <ChainLabel>{name}</ChainLabel>
       </ContainerInit>
       <ChainAccount>
-        {replaceAccount(amount)} {symbol}
+        {replaceBalance(balance)} {symbol}
       </ChainAccount>
     </div>
   );

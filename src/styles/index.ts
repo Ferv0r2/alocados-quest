@@ -3,3 +3,4 @@ export * from "@/styles/HeaderStyles";
 export * from "@/styles/ExchangeStyles";
 export * from "@/styles/TransactionStyles";
 export * from "@/styles/ComponentStyles";
+export * from "@/styles/AnimateStyles";

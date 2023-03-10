@@ -34,6 +34,15 @@ const Typography = styled.h3<{ weight: number }>`
   font-weight: ${({ weight }) => weight || "initial"};
 `;
 
+const Backdrop = styled.div`
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+`;
+
 const Padding = styled.div<{ sizes: string }>`
   padding: ${({ sizes }) => sizes || "initial"};
 `;
@@ -58,6 +67,7 @@ export {
   Icon,
   ContainerInit,
   Typography,
+  Backdrop,
   Padding,
   Margin,
   Gap,

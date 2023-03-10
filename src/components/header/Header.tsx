@@ -1,10 +1,6 @@
 import { useLocation } from "react-router-dom";
+import { navItems } from "@/utils";
 import { HeaderLayout, HeaderLogo, HeaderNav, NavLink } from "@/styles";
-
-const navItems: { name: string; path: string }[] = [
-  { name: "환전하기", path: "/" },
-  { name: "거래내역", path: "/transaction" },
-];
 
 export const Header = () => {
   const location = useLocation();
@@ -18,7 +14,7 @@ export const Header = () => {
       <HeaderNav>
         {navItems.map((v) => (
           <li key={v.path}>
-            <NavLink to={v.path} active={location.pathname === v.path}>
+            <NavLink to={v.path} active={location.pathname === v.path ? 1 : 0}>
               {v.name}
             </NavLink>
           </li>

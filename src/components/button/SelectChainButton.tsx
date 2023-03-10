@@ -1,52 +1,56 @@
-import { ContainerInit, IconBox, Icon } from "@/styles";
+import { useState } from "react";
+import { useExchange } from "@/hooks/useExchange";
+import { Dropdown } from "@/components/dropdown/Dropdown";
+import { IconImage } from "@/components/image/IconImage";
+import {
+  ContainerInit,
+  SwapChainButtonContainer,
+  SwapChainButtonLabel,
+  AnimateRotate,
+} from "@/styles";
 
 interface Props {
+  label?: boolean;
   name: string;
   symbol: string;
 }
 
-export const SelectChainButton = ({ name, symbol }: Props) => {
+export const SelectChainButton = ({ label, name, symbol }: Props) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const { setFromChain, setToChain } = useExchange();
+
+  const onChangeDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const onSelected = (idx: number) => {
+    label ? setFromChain(idx) : setToChain(idx);
+    setIsOpen(false);
+  };
+
   return (
-    <>
+    <SwapChainButtonContainer onClick={onChangeDropdown}>
+      {isOpen && (
+        <Dropdown onClose={onChangeDropdown} onSelected={onSelected} />
+      )}
       <ContainerInit>
-        <IconBox size={24}>
-          <Icon
-            src={`assets/logos/${symbol.toLowerCase()}.png`}
-            alt={symbol}
-            size={18}
-          />
-        </IconBox>
-        <p
-          style={{
-            color: "#4C5B7A",
-            fontSize: "14px",
-            fontFamily: "Poppins",
-            marginLeft: "4px",
-            fontWeight: 400,
-          }}
-        >
-          {name}
-        </p>
+        <IconImage
+          src={`/assets/logos/${symbol.toLowerCase()}.png`}
+          name={symbol}
+          size={18}
+          boxSize={24}
+        />
+        <SwapChainButtonLabel>{name}</SwapChainButtonLabel>
       </ContainerInit>
 
-      <figure
-        style={{
-          width: "24px",
-          height: "24px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <img
-          style={{
-            width: "18px",
-            height: "18px",
-          }}
-          src="assets/icons/dropdown.png"
-          alt="dropdown"
+      <AnimateRotate active={isOpen ? 1 : 0}>
+        <IconImage
+          src="/assets/icons/dropdown.png"
+          name="dropdown"
+          size={18}
+          boxSize={24}
         />
-      </figure>
-    </>
+      </AnimateRotate>
+    </SwapChainButtonContainer>
   );
 };

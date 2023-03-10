@@ -30,6 +30,11 @@ const TransactionLogFilter = styled(TransactionLogBase)`
   margin: 24px 0 8px 0;
 `;
 
+const TransactionLogFilterLabel = styled(ContainerInit)`
+  grid-column: 2 / span 2;
+  margin-left: auto;
+`;
+
 const TransactionLogCotainer = styled(TransactionLogBase)`
   grid-template-columns: repeat(8, 1fr);
   gap: 16px;
@@ -48,7 +53,7 @@ const TransactionColumn = styled(ContainerInit)<{ size: number }>`
 
 const TransactionAccountLabel = styled.h3`
   display: block;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 600;
   margin-left: 8px;
   color: #404e71;
@@ -58,6 +63,7 @@ export {
   TransactionLayout,
   TransactionContainer,
   TransactionLogFilter,
+  TransactionLogFilterLabel,
   TransactionLogCotainer,
   TransactionDate,
   TransactionColumn,

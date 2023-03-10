@@ -22,7 +22,7 @@ const HeaderNav = styled.nav`
   gap: 24px;
 `;
 
-const NavLink = styled(Link)<{ active?: boolean }>`
+const NavLink = styled(Link)<{ active?: 1 | 0 }>`
   font-size: 15px;
   font-weight: 600;
   line-height: 36px;

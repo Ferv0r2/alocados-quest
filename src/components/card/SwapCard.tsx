@@ -1,36 +1,42 @@
+import { useAccount } from "@/hooks/useAccount";
+import { useInput } from "@/hooks/useInput";
+import { useExchange } from "@/hooks/useExchange";
+import { SelectChainButton } from "@/components/button/SelectChainButton";
 import {
   SwapCardContainer,
   SwapCounterLabel,
   SwapCounter,
-  SwapChainButtonContainer,
   SwapInputContainer,
   SwapAfterCount,
 } from "@/styles";
-import { SelectChainButton } from "../button/SelectChainButton";
 
 interface Props {
   label?: boolean;
-  name: string;
-  symbol: string;
-  amount: number;
+  chainIdx: number;
 }
 
-export const SwapCard = ({ label, name, symbol, amount }: Props) => {
+export const SwapCard = ({ label, chainIdx }: Props) => {
+  const { inputValue, isError, onChange } = useInput();
+  const { account } = useAccount();
+  const { exchangeAmount } = useExchange();
+
   return (
     <SwapCardContainer sizes="16px">
-      <SwapInputContainer label={label}>
+      <SwapInputContainer label={label ? 1 : 0} isError={isError ? 1 : 0}>
         {label ? (
-          <div>
+          <div style={{ width: "100%" }}>
             <SwapCounterLabel>전환 수량</SwapCounterLabel>
-            <SwapCounter type="number" value={1} onChange={() => {}} />
+            <SwapCounter type="number" value={inputValue} onChange={onChange} />
           </div>
         ) : (
-          <SwapAfterCount>{amount}</SwapAfterCount>
+          <SwapAfterCount>{exchangeAmount}</SwapAfterCount>
         )}
       </SwapInputContainer>
-      <SwapChainButtonContainer>
-        <SelectChainButton name={name} symbol={symbol} />
-      </SwapChainButtonContainer>
+      <SelectChainButton
+        label={label}
+        name={account[chainIdx]?.name || ""}
+        symbol={account[chainIdx]?.symbol || ""}
+      />
     </SwapCardContainer>
   );
 };

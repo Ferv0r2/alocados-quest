@@ -35,13 +35,13 @@ export const txLogItems: ITransaction[] = [
     to: "ETH",
     fromAmount: 1000,
     toAmount: 10,
-    date: new Date(2023, 2, 9, 20),
+    date: new Date(2023, 2, 9, 20, 38),
   },
   {
     from: "ETH",
     to: "SOL",
     fromAmount: 10,
     toAmount: 1000,
-    date: new Date(2023, 2, 9, 11),
+    date: new Date(2023, 2, 9, 11, 17),
   },
 ];
